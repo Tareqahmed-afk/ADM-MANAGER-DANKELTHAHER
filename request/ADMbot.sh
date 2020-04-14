@@ -153,9 +153,9 @@ fi
 # USUARIO BLOCK
 blockfun () {
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "USTED NO PUEDE USAR EL BOT")\n"
+          bot_retorno+="$(fun_trans " لا يمكنك استخدام البوت")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Comandos bloqueados")\n"
+          bot_retorno+="$(fun_trans "أوامر مقفلة")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -189,11 +189,11 @@ local bot_retorno+="$LINE\n"
 return 0
 else
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "USTED NO PUEDE USAR ESTE BOT")\n"
+          bot_retorno+="$(fun_trans "لا يمكنك استخدام هذا الروبوت")\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "No tiene permiso de uso")\n"
-          bot_retorno+="$(fun_trans "Intento de acceso denegado")\n"
-          bot_retorno+="$(fun_trans "Usuario y Contraseña Errores")\n"
+          bot_retorno+="$(fun_trans "ليس لديك إذن للاستخدام")\n"
+          bot_retorno+="$(fun_trans "محاولة الوصول مرفوضة")\n"
+          bot_retorno+="$(fun_trans "أخطاء المستخدم وكلمة المرور")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -203,7 +203,7 @@ fi
 }
 loguin_fun () {
 local bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "USUARIOS LIBERTADOS EN EL BOT")\n"
+          bot_retorno+="$(fun_trans "مستخدمون أحرار في البوت")\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -251,24 +251,24 @@ local bot_retorno="$LINE\n"
 # AJUDA
 ajuda_fun () {
 local bot_retorno="$LINE\n"
-         bot_retorno+="$(fun_trans "Hola amigo")\n"
-         bot_retorno+="$(fun_trans "Bienvenido al BOT ")\n"
+         bot_retorno+="$(fun_trans "مرحبا بك")\n"
+         bot_retorno+="$(fun_trans "في بوت كربلان ")\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="$(fun_trans "Aquí esta la lista de Comandos Disponibles")\n"
          bot_retorno+="$LINE\n"
-         bot_retorno+="$(fun_trans "COMANDOS")\n"
-         bot_retorno+="/online ($(fun_trans "usuarios online"))\n"
-         bot_retorno+="/useradd ($(fun_trans "adicionar usuario"))\n"
+         bot_retorno+="$(fun_trans "الأوامر")\n"
+         bot_retorno+="/online ($(fun_trans "مستخدمي الإنترنت"))\n"
+         bot_retorno+="/useradd ($(fun_trans "انشاء مستخدم"))\n"
          [[ $(dpkg --get-selections|grep -w "openvpn"|head -1) ]] && [[ -e /etc/openvpn/openvpn-status.log ]] && bot_retorno+="/openadd ($(fun_trans "criar arquivo openvpn"))\n"
-         bot_retorno+="/userdell ($(fun_trans "remover usuario"))\n"
-         bot_retorno+="/info ($(fun_trans "información de los usuarios"))\n"
-         bot_retorno+="/infovps ($(fun_trans "información del servidor"))\n"
-         bot_retorno+="/usuarios ($(fun_trans "usuarios liberados en el bot"))\n"
-         bot_retorno+="/lang ($(fun_trans "Traducir un texto"))\n"
-         bot_retorno+="/scan ($(fun_trans "hace un scan de subdominios"))\n"
-         bot_retorno+="/gerar ($(fun_trans "generador de payload"))\n"
-         bot_retorno+="/criptar ($(fun_trans "Codificación y decodificación de un texto"))\n"
-         bot_retorno+="/logar $(fun_trans "Usuario Contraseña") ($(fun_trans "libera el bot"))\n"
+         bot_retorno+="/userdell ($(fun_trans "حذف مستخدم"))\n"
+         bot_retorno+="/info ($(fun_trans "معلومات المستخدم"))\n"
+         bot_retorno+="/infovps ($(fun_trans "معلومات الخادم"))\n"
+         bot_retorno+="/usuarios ($(fun_trans "المستخدمين الأحرار في البوت"))\n"
+         bot_retorno+="/lang ($(fun_trans "ترجمة نص"))\n"
+         bot_retorno+="/scan ($(fun_trans "قم بمسح نطاق فرعي"))\n"
+         bot_retorno+="/gerar ($(fun_trans "انشاء بايلود"))\n"
+         bot_retorno+="/criptar ($(fun_trans "ترميز نص وفك ترميزه"))\n"
+         bot_retorno+="/logar $(fun_trans "كلمة مرور و اسم المستخدم") ($(fun_trans "libera el bot"))\n"
          bot_retorno+="$LINE\n"
 	     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -341,9 +341,9 @@ HOUR="${HOR}h:${MIN}m:${SEC}s"
 TOTALPID="$(echo $PID|bc)/$MAXPID"
 local IMPRIME="YES"
 local bot_retorno+="$LINE\n"
-          bot_retorno="$(fun_trans "Usuario"): $user\n"
-          bot_retorno+="$(fun_trans "Conexiones"): $TOTALPID\n"
-          bot_retorno+="$(fun_trans "Tiempo Total"): $HOUR\n"
+          bot_retorno="$(fun_trans "اسم المستخدم"): $user\n"
+          bot_retorno+="$(fun_trans "عدد المتصلين"): $TOTALPID\n"
+          bot_retorno+="$(fun_trans "عدد الساعات"): $HOUR\n"
           bot_retorno+="$LINE\n"
          ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -362,9 +362,9 @@ done <<< "$(mostrar_usuarios)"
 useradd_fun () {
 error_fun () {
 local bot_retorno="$LINE\n"
-         bot_retorno+="$(fun_trans "MODO DE USO")\n"
+         bot_retorno+="$(fun_trans "كيفية الإستخدام")\n"
          bot_retorno+="$LINE\n"
-         bot_retorno+="useradd $(fun_trans "Usuario Senha Dias Limite")\n"
+         bot_retorno+="useradd $(fun_trans "اسم المستخدم كلمه المرور عدد الأيام  المتصلين المسموح بهم")\n"
          bot_retorno+="$(fun_trans "Exemplo"):\n"
          bot_retorno+='useradd admin admin 30 1\n'
          bot_retorno+="$LINE\n"
@@ -456,7 +456,7 @@ local bot_retorno="$LINE\n"
 userdell_fun () {
 error_fun () {
 local bot_retorno="$LINE\n"
-         bot_retorno+="$(fun_trans "MODO DE USO")\n"
+         bot_retorno+="$(fun_trans "كيفية الإستخدام")\n"
          bot_retorno+="$LINE\n"
          bot_retorno+="userdell $(fun_trans "Usuario")\n"
          bot_retorno+="$(fun_trans "Exemplo"):\n"
@@ -640,16 +640,16 @@ CONNECT [host_port]@mhost/ [protocol][crlf]Host: mhost[crlf]X-Forwarded-For: mho
 }
 fail_fun () {
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "MODO DE USO"):\n"
+          bot_retorno+="$(fun_trans "كيفية الإستخدام"):\n"
           bot_retorno+="$LINE\n"
           bot_retorno+="/gerar $(fun_trans "Host") $(fun_trans "solicitud") $(fun_trans "Conexion")\n"
           bot_retorno+="$(fun_trans "Exemplo"):\n"
           bot_retorno+="/gerar www.host.com (1 a 9) (1 a 3)\n"
           bot_retorno+="/gerar www.host.com 2 1\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Metodos solicitud")\n${LINE}\n1-GET, 2-CONNECT, 3-PUT, 4-OPTIONS, 5-DELETE, 6-HEAD, 7-TRACE, 8-PROPATCH, 9-PATCH\n"
+          bot_retorno+="$(fun_trans "طرق التثبيت")\n${LINE}\n1-GET, 2-CONNECT, 3-PUT, 4-OPTIONS, 5-DELETE, 6-HEAD, 7-TRACE, 8-PROPATCH, 9-PATCH\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="$(fun_trans "Metodos de Conexion")\n${LINE}\n1-REALDATA, 2-NETDATA, 3-RAW\n"
+          bot_retorno+="$(fun_trans "طرق الاتصال")\n${LINE}\n1-REALDATA, 2-NETDATA, 3-RAW\n"
           bot_retorno+="$LINE\n"
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -692,7 +692,7 @@ sed -i "s;mhost;$valor1;g" $HOME/Payloads.txt
 sed -i "s;mip;$valor2;g" $HOME/Payloads.txt
 if [[ -e $HOME/Payloads.txt ]]; then
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "PAYLOADS GERADAS COM SUCESSO")\n"
+          bot_retorno+="$(fun_trans "تم إنشاء البايلود بنجاح")\n"
           bot_retorno+="$LINE\n"
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -715,9 +715,9 @@ fi
 scan_fun () {
 error_fun () {
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "Modo de uso"):\n"
-          bot_retorno+="/scan $(fun_trans "dominio")\n"
-          bot_retorno+="$(fun_trans "Exemplo"): /scan www.host.com\n"
+          bot_retorno+="$(fun_trans "كيفية الإستخدام"):\n"
+          bot_retorno+="/scan $(fun_trans "دومين")\n"
+          bot_retorno+="$(fun_trans "مثال"): /scan www.host.com\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -761,12 +761,12 @@ done <<< "$RETURN"
 	}
 fi
 }
-
+ 
 openadd_fun () {
 [[ $(dpkg --get-selections|grep -w "openvpn"|head -1) ]] || return 0
 [[ -e /etc/openvpn/openvpn-status.log ]] || return 0
 newclient "$nomeuser" "$senhauser"
-[[ -z $1 ]] && client="adm" || client="$1"
+[[ -z $1 ]] && client="كربلان" || client="$1"
 cp /etc/openvpn/client-common.txt $HOME/$client.ovpn
 echo "<key>
 $(cat /etc/openvpn/client-key.pem)
@@ -780,7 +780,7 @@ $(cat /etc/openvpn/ca.pem)
 [[ ! -z $1 ]] && [[ ! -z $2 ]] && sed -i "s;auth-user-pass;<auth-user-pass>\n$1\n$2\n</auth-user-pass>;g" $HOME/$client.ovpn
 local bot_retorno="$LINE\n"
           bot_retorno+="$(fun_trans "Para Gerar Arquivos Com Autenticacao Automatica Utilize"):\n/openadd usuario senha\n$LINE\n"
-          bot_retorno+="$(fun_trans "ARQUIVO OPENVPN GERADO COM SUCESSO")\n"
+          bot_retorno+="$(fun_trans "ملف OPENVPN الذي تم إنشاؤه بنجاح")\n"
           bot_retorno+="$LINE\n"
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -794,7 +794,7 @@ return 0
 cript_fun () {
 if [[ -z $2 ]]; then
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "Modo de uso"):\n"
+          bot_retorno+="$(fun_trans "كيفية الإستخدام"):\n"
           bot_retorno+="/criptar texto_for_cript\n"
           bot_retorno+="$LINE\n"
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -852,7 +852,7 @@ fi
 language_fun () {
 if [[ -z $2 || -z $3 ]]; then
 local bot_retorno="$LINE\n"
-          bot_retorno+="$(fun_trans "Modo de uso"):\n"
+          bot_retorno+="$(fun_trans "كيفية الإستخدام"):\n"
           bot_retorno+="/lang (pt, fr, es, en...) (text)\n"
           bot_retorno+="/lang es Hello\n"
           bot_retorno+="$LINE\n"
@@ -895,7 +895,7 @@ local bot_retorno="$LINE\n"
 #          ShellBot.editMessageText --chat_id ${message_chat_id[$id]} --message_id ${reply_to_message_message_id[$id]} --text "$(echo -e $bot_retorno)" --parse_mode markdown
 #return 0
 }
-
+ 
 # LOOP ESCUTANDO O TELEGRAN
 while true; do
     ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
